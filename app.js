@@ -84,18 +84,13 @@ function mostrarNumeros3ou5(){
         }
     }
 }
-function mostrarNumerosPrimos(){
-    const numeros=document.getElementById('numeros').value.split(',')
-    const container=document.getElementById('container-mostrar-numeros-primos')
-    const ultimoIndice=numeros.length
-    container.replaceChildren('')
-    for(let contador=0;contador<ultimoIndice;contador++){
-        if(numeros[contador]%1==0||numeros[contador]%numeros[contador]==0){
-            const novoSpan=document.createElement('span')
-            novoSpan.textContent=numeros[contador]
-            container.appendChild(novoSpan)
-        }
-    }
+function mostrarNumerosPrimos(numero){
+    if(numero<=1)return false
+    if(numero<=3)return true
+    if(numero%2===0||numero%3===0)return false
+    for(let contador=5;contador<numero;contador++){
+        if(numero%contador===0)return false
+    }return true
 }
 botaoMostrarNumeros.addEventListener('click',mostrarNumeros)
 botaoMostrarNumerosPares.addEventListener('click',mostrarNumerosPares)
